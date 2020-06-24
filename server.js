@@ -71,8 +71,9 @@ app.get('/image', (req, res, next)=>{
 			imagedb.find({name : name}).toArray((err, image)=>{
 			
 				var i = 0;
-				for(let im in image){
+				for(let im of image){
 				
+					console.log("IM: ",im);
 					if((i == limit)&&(limit != undefined)){
 						break;
 					}
