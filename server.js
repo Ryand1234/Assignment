@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //MONGO URI
-const MONGO_URI = process.env.MONGO_URI | "mongodb://localhost:8000"
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:8000"
 
 //Routes
 
