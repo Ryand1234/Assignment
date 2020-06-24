@@ -62,6 +62,8 @@ app.get('/image', (req, res, next)=>{
 		offset = req.query.offset
 	}
 
+	console.log("naem: ",name, " Limit: ",limit)
+
 	MongoClient.connect(MONGO_URI, (err, client)=>{
 	
 		var imagedb = client.db('assignment').collection('image')
