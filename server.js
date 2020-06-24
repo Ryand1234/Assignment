@@ -69,20 +69,21 @@ app.get('/image', (req, res, next)=>{
 		
 		if(name != undefined){
 		
-			imagedb.find({name : name}).toArray((err, image)=>{
+			imagedb.find({name : name}, (err, image)=>{
 			
 				var i = 0;
-				for(var im = 0; im < image.length; im++){
+				console.log("IM: ",image);
+				for(let im of image){
 				
-					console.log("IM: ",image[im]);
+					console.log("IM: ",im);
 					if((i == limit)&&(limit != undefined)){
 						break;
 					}
 
 					if(imageArray == undefined){
-						imageArray = [image[im]]
+						imageArray = im]
 					} else {
-						imageArray.push(image[im])
+						imageArray.push(im)
 					}
 
 					i = i + 1;
