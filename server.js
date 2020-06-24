@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //MONGO URI
-const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://Ryand123:Ryand123@mongo-cluster-gxhr2.gcp.mongodb.net/assignment?retryWrites=true"
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost"
 
 //Routes
 
