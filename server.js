@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //MONGO URI
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:8000"
+const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://Ryand123:Ryand123@mongo-cluster-gxhr2.gcp.mongodb.net/assignment?retryWrites=true"
 
 //Routes
 
@@ -68,50 +68,51 @@ app.get('/image', (req, res, next)=>{
 		var imagedb = client.db('assignment').collection('image')
 		
 		if(name != undefined){
-		
-			imagedb.find({name : name}, (err, image)=>{
 			
-				var i = 0;
-				console.log("IM: ",image);
-				for(let im of image){
+			var i;
+			imagedb.find({}).toArray((err, image)=>{
+			
+				i = 0;
+				j = 0;
 				
-					console.log("IM: ",im);
-					if((i == limit)&&(limit != undefined)){
-						break;
+				for(let im in image){
+				
+					if(image[im].name == name){
+						j = j + 1
+						if(imageArray == undefined){
+							imageArray = [image[im]]
+						} else {
+							imageArray.push(image[im])
+						}
 					}
-
-					if(imageArray == undefined){
-						imageArray = im
-					} else {
-						imageArray.push(im)
-					}
-
 					i = i + 1;
+					if(((j == limit)&&(limit != undefined))||(i == image.length)){
+                                                        res.status(200).json(imageArray);
+							break;
+                                         }
 				}
 			});
 
-			res.status(200).json(imageArray)
 
 		} else {
 			imagedb.find({}).toArray((err, image)=>{
 			
-				var i = 0;
+				var j = 0;
                                 for(let im in image){
 
-                                        if((i == limit)&&(limit != undefined)){
-                                                break;
-                                        }
+					j = j + 1
+                        	        if(imageArray == undefined){
+                                		imageArray = [image[im]]
+	                                } else {
+                                                imageArray.push(image[im])
+        	                        }
 
-                                        if(imageArray == undefined){
-                                                imageArray = [im]
-                                        } else {
-                                                imageArray.push(im)
-                                        }
-
-                                        i = i + 1;
+					if(((j == limit)&&(limit != undefined))||(j == image.length)){
+                                                        res.status(200).json(imageArray);
+                                                        break;
+                                         }
                                 }
 
-				res.status(200).json(imageArray)
 
 			});
 		}
