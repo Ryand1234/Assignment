@@ -5,6 +5,15 @@
 
 This link contain no view page so visiting this link directly via browser will crash the server. It should be used in making APIs call only.
 
+## Module Used
+| Module | Use |
+| ------ | --- |
+| Express | To create server |
+| mongodb | To connect to mongodb database ( Mongodb Atlas ) |
+| morgan | To create logs on screen |
+| doten  | To add .env file |
+| body-parser | To read req body parameter |
+
 ## Routes
 | endpoint | Method |
 | -------- | ------ |
