@@ -37,8 +37,7 @@ app.post('/image/add', (req, res, next)=>{
 			if(err){
 				res.status(501).json({"msg" : "Error in adding image"});
 			} else {
-				console.log("SUccess; ",success);
-				res.status(200).json(success);
+				res.status(200).json(success.ops[0]);
 			}
 		});
 	});
@@ -91,7 +90,7 @@ app.get('/image', (req, res, next)=>{
 			res.status(200).json(imageArray)
 
 		} else {
-			imagedb.find({}).toArray((err, array)=>{
+			imagedb.find({}).toArray((err, image)=>{
 			
 				var i = 0;
                                 for(let im in image){
