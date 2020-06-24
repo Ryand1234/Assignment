@@ -55,14 +55,13 @@ app.get('/image', (req, res, next)=>{
 	}
 
 	if(req.query.limit != undefined){
-		limit = rq.query.limit
+		limit = req.query.limit
 	}
 
 	if(req.query.offset != undefined){
 		offset = req.query.offset
 	}
 
-	console.log("naem: ",name, " Limit: ",limit)
 
 	MongoClient.connect(MONGO_URI, (err, client)=>{
 	
@@ -73,7 +72,7 @@ app.get('/image', (req, res, next)=>{
 			imagedb.find({name : name}).toArray((err, image)=>{
 			
 				var i = 0;
-				for(let im of image){
+				for(let im in image){
 				
 					console.log("IM: ",im);
 					if((i == limit)&&(limit != undefined)){
