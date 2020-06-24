@@ -37,7 +37,8 @@ app.post('/image/add', (req, res, next)=>{
 			if(err){
 				res.status(501).json({"msg" : "Error in adding image"});
 			} else {
-				res.status(200).json(success._op[0]);
+				console.log("SUccess; ",success);
+				res.status(200).json(success);
 			}
 		});
 	});
