@@ -1,6 +1,9 @@
 var express = require('express')
 var MongoClient = require('mongodb').MongoClient
 var ObjectId = require('mongodb').ObjectId
+var bodyParser = require('body-parser')
+var logger = require('morgan')
+var path = require('path')
 
 var app = express()
 
@@ -65,7 +68,7 @@ app.get('/image', (req, res, next)=>{
 		
 		if(name != undefined){
 		
-			imagedb.findOne({name : name}).toArray((err, image)=>{
+			imagedb.find({name : name}).toArray((err, image)=>{
 			
 				var i = 0;
 				for(let im in image){
@@ -81,13 +84,13 @@ app.get('/image', (req, res, next)=>{
 					}
 
 					i = i + 1;
-				})
+				}
 			});
 
 			res.status(200).json(imageArray)
 
 		} else {
-			imagedb.findOne({}).toArray(err, array)=>{
+			imagedb.find({}).toArray((err, array)=>{
 			
 				var i = 0;
                                 for(let im in image){
@@ -103,7 +106,7 @@ app.get('/image', (req, res, next)=>{
                                         }
 
                                         i = i + 1;
-                                })
+                                }
 
 				res.status(200).json(imageArray)
 
@@ -112,6 +115,11 @@ app.get('/image', (req, res, next)=>{
 	})
 });
 
+
+//Start App
+app.listen(process.env.PORT | 3000, ()=>{
+	console.log(`Server Listening at port ${process.env.PORT | 3000}`);
+})
 
 app.use(function(req, res, next) {
   next(createError(404));
