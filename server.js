@@ -4,6 +4,7 @@ var ObjectId = require('mongodb').ObjectId
 var bodyParser = require('body-parser')
 var logger = require('morgan')
 var path = require('path')
+require('dotenv').config()
 
 var app = express()
 
@@ -47,7 +48,7 @@ app.post('/image/add', (req, res, next)=>{
 //Get Image
 app.get('/image', (req, res, next)=>{
 
-	var limit, name, offset;
+	var limit, name;
 	var imageArray = new Array()
 
 	if(req.query.nameString != undefined){
@@ -56,10 +57,6 @@ app.get('/image', (req, res, next)=>{
 
 	if(req.query.limit != undefined){
 		limit = req.query.limit
-	}
-
-	if(req.query.offset != undefined){
-		offset = req.query.offset
 	}
 
 
