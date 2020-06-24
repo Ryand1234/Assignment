@@ -1,0 +1,27 @@
+{
+  "name": "assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ryand1234/Assignment.git"
+  },
+  "author": "Riyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ryand1234/Assignment/issues"
+  },
+  "homepage": "https://github.com/Ryand1234/Assignment#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9",
+    "morgan": "^1.10.0"
+  }
+}
