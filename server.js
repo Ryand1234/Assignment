@@ -81,7 +81,7 @@ app.get('/image', (req, res, next)=>{
 					}
 
 					if(imageArray == undefined){
-						imageArray = im]
+						imageArray = im
 					} else {
 						imageArray.push(im)
 					}
