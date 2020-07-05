@@ -1,10 +1,5 @@
 # Assignment
 
-## Deployment
-[Deployment](https://image-assignment1.herokuapp.com)
-
-This link contain no view page so visiting this link directly via browser will crash the server. It should be used in making APIs call only.
-
 ## Module Used
 | Module | Use |
 | ------ | --- |
